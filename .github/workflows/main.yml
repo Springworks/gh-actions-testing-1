@@ -15,9 +15,11 @@ jobs:
           X_github_head_ref: ${{ github.head_ref }}
           X_github_base_ref: ${{ github.base_ref }}
           X_github_ref: ${{ github.ref }}
+          X_github_event_path: ${{ github.event_path }}
         run: |
           echo "github.event_name: $X_GITHUB_EVENT_NAME"
           echo "github.actor: $X_GITHUB_ACTOR"
           echo "github.head_ref: $X_github_head_ref"
           echo "github.base_ref: $X_github_base_ref"
           echo "github.ref: $X_github_ref"
+          echo "X_github_event_path: $X_github_event_path"
