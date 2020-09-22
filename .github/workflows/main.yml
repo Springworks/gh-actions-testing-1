@@ -12,8 +12,12 @@ jobs:
         env:
           X_GITHUB_EVENT_NAME: ${{ github.event_name }}
           X_GITHUB_ACTOR: ${{ github.actor }}
-          X_CONTEXT_PAYLOAD_PULL_REQUEST_NUMBER: ${{ context.payload.pull_request.number }}
+          X_github_head_ref: ${{ github.head_ref }}
+          X_github_base_ref: ${{ github.base_ref }}
+          X_github_ref: ${{ github.ref }}
         run: |
           echo "github.event_name: $X_GITHUB_EVENT_NAME"
           echo "github.actor: $X_GITHUB_ACTOR"
-          echo "context.payload.pull_request.number: $X_CONTEXT_PAYLOAD_PULL_REQUEST_NUMBER"
+          echo "github.head_ref: $X_github_head_ref"
+          echo "github.base_ref: $X_github_base_ref"
+          echo "github.ref: $X_github_ref"
