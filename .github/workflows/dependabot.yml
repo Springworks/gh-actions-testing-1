@@ -1,0 +1,24 @@
+name: Dependabot
+on: pull_request
+jobs:
+  approve_and_comment:
+    if: github.actor == 'dbrockman'
+    runs-on: ubuntu-latest
+    steps:
+      - name: approve_and_comment
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            await github.pullRequests.createReview({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE'
+            });
+            await github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '@dbrockman Great job!'
+            });
